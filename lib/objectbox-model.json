@@ -4,44 +4,154 @@
   "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
   "entities": [
     {
-      "id": "1:7135072308248005844",
-      "lastPropertyId": "5:5054704534383679968",
-      "name": "Note",
+      "id": "1:863594941756572646",
+      "lastPropertyId": "6:4577503235811178359",
+      "name": "LocalNoteV1",
       "properties": [
         {
-          "id": "1:8960619537129887054",
+          "id": "1:8978142677250676671",
           "name": "objectBoxId",
           "type": 6,
           "flags": 1
         },
         {
-          "id": "2:7816729761265724053",
+          "id": "2:330582822938301416",
           "name": "id",
           "type": 9,
           "flags": 2080,
-          "indexId": "1:8672061301578437542"
+          "indexId": "1:893844288354280654"
         },
         {
-          "id": "3:920514203270767029",
+          "id": "3:1917882053980317808",
+          "name": "createdAt",
+          "type": 10
+        },
+        {
+          "id": "4:2079328099916470224",
           "name": "modifiedAt",
           "type": 10
         },
         {
-          "id": "4:5504343683616637838",
+          "id": "5:5113967944150913497",
           "name": "title",
           "type": 9
         },
         {
-          "id": "5:5054704534383679968",
+          "id": "6:4577503235811178359",
           "name": "text",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:349507091380689959",
+      "lastPropertyId": "6:6170379021057657937",
+      "name": "ServerNoteV1",
+      "properties": [
+        {
+          "id": "1:3032011050505503452",
+          "name": "objectBoxId",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:5858172974274699921",
+          "name": "id",
+          "type": 9,
+          "flags": 2080,
+          "indexId": "2:4336757161886459036"
+        },
+        {
+          "id": "3:7409050764233876568",
+          "name": "createdAt",
+          "type": 10
+        },
+        {
+          "id": "4:6703584039622439264",
+          "name": "modifiedAt",
+          "type": 10
+        },
+        {
+          "id": "5:8431372522042999510",
+          "name": "title",
+          "type": 9
+        },
+        {
+          "id": "6:6170379021057657937",
+          "name": "text",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:3553965224781449731",
+      "lastPropertyId": "5:6566235524209993216",
+      "name": "ServerV1",
+      "properties": [
+        {
+          "id": "1:4829534177040021320",
+          "name": "objectBoxId",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:5887694889753897601",
+          "name": "address",
+          "type": 9,
+          "flags": 2080,
+          "indexId": "3:108077167109958859"
+        },
+        {
+          "id": "3:1585814830122656348",
+          "name": "token",
+          "type": 9
+        },
+        {
+          "id": "4:3599481749148606389",
+          "name": "order",
+          "type": 6,
+          "flags": 40,
+          "indexId": "4:8559891187531066903"
+        },
+        {
+          "id": "5:6566235524209993216",
+          "name": "lastEventId",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "4:5114660945951561952",
+      "lastPropertyId": "3:1217023794932705423",
+      "name": "SuggestionV1",
+      "properties": [
+        {
+          "id": "1:1031018416092211487",
+          "name": "objectBoxId",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:7748878161054383373",
+          "name": "name",
+          "type": 9,
+          "flags": 2080,
+          "indexId": "5:8378110497491397150"
+        },
+        {
+          "id": "3:1217023794932705423",
+          "name": "data",
           "type": 9
         }
       ],
       "relations": []
     }
   ],
-  "lastEntityId": "1:7135072308248005844",
-  "lastIndexId": "1:8672061301578437542",
+  "lastEntityId": "4:5114660945951561952",
+  "lastIndexId": "5:8378110497491397150",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,

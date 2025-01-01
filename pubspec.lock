@@ -43,10 +43,10 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: "913d5965935501fec495a8ed2e3fe953d9b53dcf"
+      resolved-ref: "4442dfabaf71e09b0aad34771e63e99cb3ea7f6f"
       url: "https://github.com/Beshence/Vault-Flutter-API"
     source: git
-    version: "0.0.2"
+    version: "0.0.4"
   boolean_selector:
     dependency: transitive
     description:

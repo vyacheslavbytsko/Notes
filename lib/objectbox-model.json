@@ -4,88 +4,6 @@
   "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
   "entities": [
     {
-      "id": "1:863594941756572646",
-      "lastPropertyId": "6:4577503235811178359",
-      "name": "LocalNoteV1",
-      "properties": [
-        {
-          "id": "1:8978142677250676671",
-          "name": "objectBoxId",
-          "type": 6,
-          "flags": 1
-        },
-        {
-          "id": "2:330582822938301416",
-          "name": "id",
-          "type": 9,
-          "flags": 2080,
-          "indexId": "1:893844288354280654"
-        },
-        {
-          "id": "3:1917882053980317808",
-          "name": "createdAt",
-          "type": 10
-        },
-        {
-          "id": "4:2079328099916470224",
-          "name": "modifiedAt",
-          "type": 10
-        },
-        {
-          "id": "5:5113967944150913497",
-          "name": "title",
-          "type": 9
-        },
-        {
-          "id": "6:4577503235811178359",
-          "name": "text",
-          "type": 9
-        }
-      ],
-      "relations": []
-    },
-    {
-      "id": "2:349507091380689959",
-      "lastPropertyId": "6:6170379021057657937",
-      "name": "ServerNoteV1",
-      "properties": [
-        {
-          "id": "1:3032011050505503452",
-          "name": "objectBoxId",
-          "type": 6,
-          "flags": 1
-        },
-        {
-          "id": "2:5858172974274699921",
-          "name": "id",
-          "type": 9,
-          "flags": 2080,
-          "indexId": "2:4336757161886459036"
-        },
-        {
-          "id": "3:7409050764233876568",
-          "name": "createdAt",
-          "type": 10
-        },
-        {
-          "id": "4:6703584039622439264",
-          "name": "modifiedAt",
-          "type": 10
-        },
-        {
-          "id": "5:8431372522042999510",
-          "name": "title",
-          "type": 9
-        },
-        {
-          "id": "6:6170379021057657937",
-          "name": "text",
-          "type": 9
-        }
-      ],
-      "relations": []
-    },
-    {
       "id": "3:3553965224781449731",
       "lastPropertyId": "5:6566235524209993216",
       "name": "ServerV1",
@@ -148,17 +66,129 @@
         }
       ],
       "relations": []
+    },
+    {
+      "id": "5:6006003953497071043",
+      "lastPropertyId": "10:4793978351494192130",
+      "name": "HistoryEntryV1",
+      "properties": [
+        {
+          "id": "1:5083553495423764237",
+          "name": "objectBoxId",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:1941982804432135666",
+          "name": "noteId",
+          "type": 9
+        },
+        {
+          "id": "3:1058376607268439307",
+          "name": "noteTitle",
+          "type": 9
+        },
+        {
+          "id": "4:5977489160618707973",
+          "name": "noteText",
+          "type": 9
+        },
+        {
+          "id": "5:6039826224761361278",
+          "name": "noteCreatedAt",
+          "type": 10
+        },
+        {
+          "id": "6:3748787353163575142",
+          "name": "noteModifiedAt",
+          "type": 10
+        },
+        {
+          "id": "7:4237851363352244624",
+          "name": "chainEventId",
+          "type": 9
+        },
+        {
+          "id": "9:5094004173957601725",
+          "name": "type",
+          "type": 9
+        },
+        {
+          "id": "10:4793978351494192130",
+          "name": "applied",
+          "type": 1
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "6:1147931286378033022",
+      "lastPropertyId": "6:5777128798332125281",
+      "name": "NoteV1",
+      "properties": [
+        {
+          "id": "1:7291602325338494453",
+          "name": "objectBoxId",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6086140606484338637",
+          "name": "id",
+          "type": 9,
+          "flags": 2080,
+          "indexId": "6:4077285268859814141"
+        },
+        {
+          "id": "3:4730067559154582414",
+          "name": "createdAt",
+          "type": 10
+        },
+        {
+          "id": "4:170160688986625962",
+          "name": "modifiedAt",
+          "type": 10
+        },
+        {
+          "id": "5:1852270230518595786",
+          "name": "title",
+          "type": 9
+        },
+        {
+          "id": "6:5777128798332125281",
+          "name": "text",
+          "type": 9
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "4:5114660945951561952",
-  "lastIndexId": "5:8378110497491397150",
+  "lastEntityId": "6:1147931286378033022",
+  "lastIndexId": "6:4077285268859814141",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
   "modelVersionParserMinimum": 5,
-  "retiredEntityUids": [],
+  "retiredEntityUids": [
+    863594941756572646,
+    349507091380689959
+  ],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    8978142677250676671,
+    330582822938301416,
+    1917882053980317808,
+    2079328099916470224,
+    5113967944150913497,
+    4577503235811178359,
+    3032011050505503452,
+    5858172974274699921,
+    7409050764233876568,
+    6703584039622439264,
+    8431372522042999510,
+    6170379021057657937,
+    4656334146689087787
+  ],
   "retiredRelationUids": [],
   "version": 1
 }

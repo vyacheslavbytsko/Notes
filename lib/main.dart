@@ -2,26 +2,26 @@ import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
-import 'package:notes/boxes/server_notes_box_v1.dart';
+import 'package:notes/boxes/history_box_v1.dart';
 import 'package:notes/boxes/servers_box_v1.dart';
 import 'package:notes/screens/home_screen.dart';
 import 'package:notes/screens/note_screen.dart';
 import 'package:notes/screens/settings_screen.dart';
 
-import 'boxes/local_notes_box_v1.dart';
+import 'boxes/notes_box_v1.dart';
 import 'boxes/suggestions_box_v1.dart';
 import 'isolates/server_isolate.dart';
 
-late LocalNotesBoxV1 localNotesBox;
-late ServerNotesBoxV1 serverNotesBox;
+late NotesBoxV1 notesBox;
+late HistoryBoxV1 historyBox;
 late ServersBoxV1 serversBox;
 late SuggestionsBoxV1 suggestionsBox;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  localNotesBox = await LocalNotesBoxV1.create();
-  serverNotesBox = await ServerNotesBoxV1.create();
+  notesBox = await NotesBoxV1.create();
+  historyBox = await HistoryBoxV1.create();
   serversBox = await ServersBoxV1.create();
   suggestionsBox = await SuggestionsBoxV1.create();
 
@@ -41,7 +41,7 @@ GoRouter router = GoRouter(
         GoRoute(
           path: 'note/:noteId',
           builder: (BuildContext context, GoRouterState state) {
-            return NoteScreen(note: localNotesBox.getLocalNote(state.pathParameters["noteId"]!)!);
+            return NoteScreen(note: notesBox.getNote(state.pathParameters["noteId"]!)!);
           },
         ),
         GoRoute(

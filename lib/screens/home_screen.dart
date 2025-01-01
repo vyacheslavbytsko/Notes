@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:notes/boxes/history_box_v1.dart';
 import 'package:notes/main.dart';
 import 'package:uuid/uuid.dart';
 
-import '../boxes/local_notes_box_v1.dart';
+import '../boxes/notes_box_v1.dart';
 import '../misc.dart';
 import '../widgets/dynamic_grid.dart';
 import '../widgets/suggestion.dart';
@@ -18,8 +19,25 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   void _openNewNote() {
-    LocalNoteV1 note = LocalNoteV1(id: Uuid().v4(), createdAt: DateTime.fromMillisecondsSinceEpoch((DateTime.timestamp().millisecondsSinceEpoch ~/ 1000) * 1000), modifiedAt: DateTime.fromMillisecondsSinceEpoch((DateTime.timestamp().millisecondsSinceEpoch ~/ 1000) * 1000), title: null, text: null);
-    localNotesBox.addLocalNote(note);
+    NoteV1 note = NoteV1(
+        id: Uuid().v4(),
+        createdAt: DateTime.timestamp(),
+        modifiedAt: DateTime.timestamp(),
+        title: null,
+        text: null
+    );
+    HistoryEntryV1 entry = HistoryEntryV1(
+        noteId: note.id,
+        type: "create_note",
+        noteTitle: null,
+        noteText: null,
+        noteCreatedAt: note.createdAt,
+        noteModifiedAt: note.modifiedAt,
+        chainEventId: null,
+        applied: true
+    );
+    notesBox.addNote(note);
+    historyBox.addEntry(entry);
     notesChangeNotifier.updateNotes();
     context.push('/note/${note.id}');
   }
@@ -179,9 +197,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ListenableBuilder(
                     listenable: notesChangeNotifier,
                     builder: (BuildContext context, Widget? child) {
-                      List<LocalNoteV1> notes = localNotesBox.getAllLocalNotesSorted();
+                      List<NoteV1> notes = notesBox.getAllNotesSorted();
                       List<Widget> notesWidgets = [];
-                      for(LocalNoteV1 note in notes) {
+                      for(NoteV1 note in notes) {
                         notesWidgets.add(
                             Card(
                               color: ElevationOverlay.applySurfaceTint(
@@ -218,7 +236,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: ListenableBuilder(
                 listenable: notesChangeNotifier,
                 builder: (BuildContext context, Widget? child) {
-                  if(localNotesBox.localNotesLength == 0) {
+                  if(notesBox.notesLength == 0) {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 96),
                       child: Center(child: Text("No notes."),),

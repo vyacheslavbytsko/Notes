@@ -1,14 +1,15 @@
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:notes/boxes/history_box_v1.dart';
 import 'package:notes/main.dart';
 
 import 'package:flutter/material.dart';
 import 'package:notes/misc.dart';
 
-import '../boxes/local_notes_box_v1.dart';
+import '../boxes/notes_box_v1.dart';
 
 class NoteScreen extends StatefulWidget {
-  final LocalNoteV1 note;
+  final NoteV1 note;
   const NoteScreen({super.key, required this.note});
 
   @override
@@ -25,6 +26,15 @@ class _NoteScreenState extends State<NoteScreen> {
   DateTime textLastModified = DateTime.timestamp();
 
   void saveNote() {
+    HistoryEntryV1 entry = HistoryEntryV1(
+        noteId: widget.note.id,
+        type: "update_note",
+        noteTitle: null,
+        noteText: null,
+        noteCreatedAt: null,
+        noteModifiedAt: DateTime.timestamp() /*will be rewritten*/,
+        chainEventId: null,
+        applied: true);
     bool flag = false;
     String? title = titleController.text == "" ? null : titleController.text;
     String? text = textController.text == "" ? null : textController.text;
@@ -32,14 +42,18 @@ class _NoteScreenState extends State<NoteScreen> {
     if(widget.note.title != title) {
       flag = true;
       widget.note.title = title;
+      entry.noteTitle = title;
     }
     if(widget.note.text != text) {
       flag = true;
       widget.note.text = text;
+      entry.noteText = text;
     }
     if(flag) {
-      widget.note.modifiedAt = DateTime.fromMillisecondsSinceEpoch((DateTime.timestamp().millisecondsSinceEpoch ~/ 1000) * 1000);
-      localNotesBox.updateLocalNote(widget.note);
+      widget.note.modifiedAt = DateTime.timestamp();
+      entry.noteModifiedAt = widget.note.modifiedAt;
+      notesBox.updateNote(widget.note);
+      historyBox.addEntry(entry);
       notesChangeNotifier.updateNotes();
     }
   }
@@ -97,7 +111,17 @@ class _NoteScreenState extends State<NoteScreen> {
               onSelected: (value) {
                 switch(value) {
                   case "Delete":
-                    localNotesBox.deleteLocalNote(widget.note);
+                    HistoryEntryV1 entry = HistoryEntryV1(
+                        noteId: widget.note.id,
+                        type: "delete_note",
+                        noteTitle: null,
+                        noteText: null,
+                        noteCreatedAt: null,
+                        noteModifiedAt: DateTime.timestamp(),
+                        chainEventId: null,
+                        applied: true);
+                    notesBox.deleteNote(widget.note);
+                    historyBox.addEntry(entry);
                     notesChangeNotifier.updateNotes();
                     context.pop("delete");
                     break;

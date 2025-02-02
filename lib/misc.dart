@@ -1,10 +1,7 @@
 import 'dart:isolate';
 
-import 'package:dio/dio.dart';
-import 'package:dio/io.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:universal_io/io.dart';
 
 class NotesChangeNotifier extends ChangeNotifier {
   void updateNotes() {
@@ -15,7 +12,6 @@ class NotesChangeNotifier extends ChangeNotifier {
 NotesChangeNotifier notesChangeNotifier = NotesChangeNotifier();
 
 class IsolateHandler {
-
   Future<void> start() async {
     late final ReceivePort mainReceivePort;
     late final SendPort mainSendPort;
@@ -37,7 +33,7 @@ class IsolateHandler {
     await Isolate.spawn(_intermediateIsolate, isolateData);
 
     intermediateReceivePort.listen((message) {
-      if(message is SendPort) {
+      if (message is SendPort) {
         isolateSendPort = message;
         main(mainReceivePort, isolateSendPort);
         return;
@@ -49,13 +45,14 @@ class IsolateHandler {
   void main(ReceivePort mainReceivePort, SendPort isolateSendPort) {}
 
   Future<void> _intermediateIsolate(isolateData) async {
-    BackgroundIsolateBinaryMessenger.ensureInitialized(isolateData["rootIsolateToken"]);
+    BackgroundIsolateBinaryMessenger.ensureInitialized(
+        isolateData["rootIsolateToken"]);
     SendPort intermediateSendPort = isolateData["intermediateSendPort"];
     ReceivePort isolateReceivePort = ReceivePort();
     intermediateSendPort.send(isolateReceivePort.sendPort);
     isolate(isolateReceivePort, intermediateSendPort);
   }
 
-  Future<void> isolate(ReceivePort isolateReceivePort, SendPort mainSendPort) async {}
-
+  Future<void> isolate(
+      ReceivePort isolateReceivePort, SendPort mainSendPort) async {}
 }

@@ -14,7 +14,7 @@ import 'package:objectbox/internal.dart'
 import 'package:objectbox/objectbox.dart' as obx;
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
-import 'boxes/history_box_v1.dart';
+import 'boxes/events_box_v1.dart';
 import 'boxes/notes_box_v1.dart';
 import 'boxes/servers_box_v1.dart';
 import 'boxes/suggestions_box_v1.dart';
@@ -84,63 +84,9 @@ final _entities = <obx_int.ModelEntity>[
       relations: <obx_int.ModelRelation>[],
       backlinks: <obx_int.ModelBacklink>[]),
   obx_int.ModelEntity(
-      id: const obx_int.IdUid(5, 6006003953497071043),
-      name: 'HistoryEntryV1',
-      lastPropertyId: const obx_int.IdUid(10, 4793978351494192130),
-      flags: 0,
-      properties: <obx_int.ModelProperty>[
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(1, 5083553495423764237),
-            name: 'objectBoxId',
-            type: 6,
-            flags: 1),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(2, 1941982804432135666),
-            name: 'noteId',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(3, 1058376607268439307),
-            name: 'noteTitle',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(4, 5977489160618707973),
-            name: 'noteText',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(5, 6039826224761361278),
-            name: 'noteCreatedAt',
-            type: 10,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(6, 3748787353163575142),
-            name: 'noteModifiedAt',
-            type: 10,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(7, 4237851363352244624),
-            name: 'chainEventId',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(9, 5094004173957601725),
-            name: 'type',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(10, 4793978351494192130),
-            name: 'applied',
-            type: 1,
-            flags: 0)
-      ],
-      relations: <obx_int.ModelRelation>[],
-      backlinks: <obx_int.ModelBacklink>[]),
-  obx_int.ModelEntity(
       id: const obx_int.IdUid(6, 1147931286378033022),
       name: 'NoteV1',
-      lastPropertyId: const obx_int.IdUid(6, 5777128798332125281),
+      lastPropertyId: const obx_int.IdUid(7, 7445643926305920763),
       flags: 0,
       properties: <obx_int.ModelProperty>[
         obx_int.ModelProperty(
@@ -172,6 +118,55 @@ final _entities = <obx_int.ModelEntity>[
         obx_int.ModelProperty(
             id: const obx_int.IdUid(6, 5777128798332125281),
             name: 'text',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(7, 7445643926305920763),
+            name: 'deleted',
+            type: 1,
+            flags: 0)
+      ],
+      relations: <obx_int.ModelRelation>[],
+      backlinks: <obx_int.ModelBacklink>[]),
+  obx_int.ModelEntity(
+      id: const obx_int.IdUid(7, 1471989264901194942),
+      name: 'EventV1',
+      lastPropertyId: const obx_int.IdUid(10, 320149354625817675),
+      flags: 0,
+      properties: <obx_int.ModelProperty>[
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(1, 2017543549357872626),
+            name: 'objectBoxId',
+            type: 6,
+            flags: 1),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(2, 7926862833358551655),
+            name: 'id',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(3, 1857989553071491577),
+            name: 'type',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(4, 7453204468056742609),
+            name: 'v',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(6, 4210281872934715268),
+            name: 'timestamp',
+            type: 10,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(7, 5506095661308959348),
+            name: 'applied',
+            type: 1,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(10, 320149354625817675),
+            name: 'data',
             type: 9,
             flags: 0)
       ],
@@ -214,11 +209,15 @@ Future<obx.Store> openStore(
 obx_int.ModelDefinition getObjectBoxModel() {
   final model = obx_int.ModelInfo(
       entities: _entities,
-      lastEntityId: const obx_int.IdUid(6, 1147931286378033022),
+      lastEntityId: const obx_int.IdUid(7, 1471989264901194942),
       lastIndexId: const obx_int.IdUid(6, 4077285268859814141),
       lastRelationId: const obx_int.IdUid(0, 0),
       lastSequenceId: const obx_int.IdUid(0, 0),
-      retiredEntityUids: const [863594941756572646, 349507091380689959],
+      retiredEntityUids: const [
+        863594941756572646,
+        349507091380689959,
+        6006003953497071043
+      ],
       retiredIndexUids: const [],
       retiredPropertyUids: const [
         8978142677250676671,
@@ -233,7 +232,19 @@ obx_int.ModelDefinition getObjectBoxModel() {
         6703584039622439264,
         8431372522042999510,
         6170379021057657937,
-        4656334146689087787
+        4656334146689087787,
+        5083553495423764237,
+        1941982804432135666,
+        1058376607268439307,
+        5977489160618707973,
+        6039826224761361278,
+        3748787353163575142,
+        4237851363352244624,
+        5094004173957601725,
+        4793978351494192130,
+        2512403238363187810,
+        1983953306033387501,
+        1038480013093662238
       ],
       retiredRelationUids: const [],
       modelVersion: 5,
@@ -320,79 +331,8 @@ obx_int.ModelDefinition getObjectBoxModel() {
 
           return object;
         }),
-    HistoryEntryV1: obx_int.EntityDefinition<HistoryEntryV1>(
-        model: _entities[2],
-        toOneRelations: (HistoryEntryV1 object) => [],
-        toManyRelations: (HistoryEntryV1 object) => {},
-        getId: (HistoryEntryV1 object) => object.objectBoxId,
-        setId: (HistoryEntryV1 object, int id) {
-          object.objectBoxId = id;
-        },
-        objectToFB: (HistoryEntryV1 object, fb.Builder fbb) {
-          final noteIdOffset = fbb.writeString(object.noteId);
-          final noteTitleOffset = object.noteTitle == null
-              ? null
-              : fbb.writeString(object.noteTitle!);
-          final noteTextOffset = object.noteText == null
-              ? null
-              : fbb.writeString(object.noteText!);
-          final chainEventIdOffset = object.chainEventId == null
-              ? null
-              : fbb.writeString(object.chainEventId!);
-          final typeOffset = fbb.writeString(object.type);
-          fbb.startTable(11);
-          fbb.addInt64(0, object.objectBoxId);
-          fbb.addOffset(1, noteIdOffset);
-          fbb.addOffset(2, noteTitleOffset);
-          fbb.addOffset(3, noteTextOffset);
-          fbb.addInt64(4, object.noteCreatedAt?.millisecondsSinceEpoch);
-          fbb.addInt64(5, object.noteModifiedAt.millisecondsSinceEpoch);
-          fbb.addOffset(6, chainEventIdOffset);
-          fbb.addOffset(8, typeOffset);
-          fbb.addBool(9, object.applied);
-          fbb.finish(fbb.endTable());
-          return object.objectBoxId;
-        },
-        objectFromFB: (obx.Store store, ByteData fbData) {
-          final buffer = fb.BufferContext(fbData);
-          final rootOffset = buffer.derefObject(0);
-          final noteCreatedAtValue =
-              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 12);
-          final objectBoxIdParam =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
-          final noteIdParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGet(buffer, rootOffset, 6, '');
-          final typeParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGet(buffer, rootOffset, 20, '');
-          final noteTitleParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGetNullable(buffer, rootOffset, 8);
-          final noteTextParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGetNullable(buffer, rootOffset, 10);
-          final noteCreatedAtParam = noteCreatedAtValue == null
-              ? null
-              : DateTime.fromMillisecondsSinceEpoch(noteCreatedAtValue);
-          final noteModifiedAtParam = DateTime.fromMillisecondsSinceEpoch(
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 14, 0));
-          final chainEventIdParam =
-              const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 16);
-          final appliedParam =
-              const fb.BoolReader().vTableGet(buffer, rootOffset, 22, false);
-          final object = HistoryEntryV1(
-              objectBoxId: objectBoxIdParam,
-              noteId: noteIdParam,
-              type: typeParam,
-              noteTitle: noteTitleParam,
-              noteText: noteTextParam,
-              noteCreatedAt: noteCreatedAtParam,
-              noteModifiedAt: noteModifiedAtParam,
-              chainEventId: chainEventIdParam,
-              applied: appliedParam);
-
-          return object;
-        }),
     NoteV1: obx_int.EntityDefinition<NoteV1>(
-        model: _entities[3],
+        model: _entities[2],
         toOneRelations: (NoteV1 object) => [],
         toManyRelations: (NoteV1 object) => {},
         getId: (NoteV1 object) => object.objectBoxId,
@@ -405,13 +345,14 @@ obx_int.ModelDefinition getObjectBoxModel() {
               object.title == null ? null : fbb.writeString(object.title!);
           final textOffset =
               object.text == null ? null : fbb.writeString(object.text!);
-          fbb.startTable(7);
+          fbb.startTable(8);
           fbb.addInt64(0, object.objectBoxId);
           fbb.addOffset(1, idOffset);
           fbb.addInt64(2, object.createdAt.millisecondsSinceEpoch);
           fbb.addInt64(3, object.modifiedAt.millisecondsSinceEpoch);
           fbb.addOffset(4, titleOffset);
           fbb.addOffset(5, textOffset);
+          fbb.addBool(6, object.deleted);
           fbb.finish(fbb.endTable());
           return object.objectBoxId;
         },
@@ -430,13 +371,72 @@ obx_int.ModelDefinition getObjectBoxModel() {
               .vTableGetNullable(buffer, rootOffset, 12);
           final textParam = const fb.StringReader(asciiOptimization: true)
               .vTableGetNullable(buffer, rootOffset, 14);
+          final deletedParam =
+              const fb.BoolReader().vTableGet(buffer, rootOffset, 16, false);
           final object = NoteV1(
               objectBoxId: objectBoxIdParam,
               id: idParam,
               createdAt: createdAtParam,
               modifiedAt: modifiedAtParam,
               title: titleParam,
-              text: textParam);
+              text: textParam,
+              deleted: deletedParam);
+
+          return object;
+        }),
+    EventV1: obx_int.EntityDefinition<EventV1>(
+        model: _entities[3],
+        toOneRelations: (EventV1 object) => [],
+        toManyRelations: (EventV1 object) => {},
+        getId: (EventV1 object) => object.objectBoxId,
+        setId: (EventV1 object, int id) {
+          object.objectBoxId = id;
+        },
+        objectToFB: (EventV1 object, fb.Builder fbb) {
+          final idOffset =
+              object.id == null ? null : fbb.writeString(object.id!);
+          final typeOffset = fbb.writeString(object.type);
+          final vOffset = fbb.writeString(object.v);
+          final dataOffset = fbb.writeString(object.data);
+          fbb.startTable(11);
+          fbb.addInt64(0, object.objectBoxId);
+          fbb.addOffset(1, idOffset);
+          fbb.addOffset(2, typeOffset);
+          fbb.addOffset(3, vOffset);
+          fbb.addInt64(5, object.timestamp?.millisecondsSinceEpoch);
+          fbb.addBool(6, object.applied);
+          fbb.addOffset(9, dataOffset);
+          fbb.finish(fbb.endTable());
+          return object.objectBoxId;
+        },
+        objectFromFB: (obx.Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+          final timestampValue =
+              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 14);
+          final objectBoxIdParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+          final idParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGetNullable(buffer, rootOffset, 6);
+          final typeParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGet(buffer, rootOffset, 8, '');
+          final vParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGet(buffer, rootOffset, 10, '');
+          final dataParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGet(buffer, rootOffset, 22, '');
+          final timestampParam = timestampValue == null
+              ? null
+              : DateTime.fromMillisecondsSinceEpoch(timestampValue);
+          final appliedParam =
+              const fb.BoolReader().vTableGet(buffer, rootOffset, 16, false);
+          final object = EventV1(
+              objectBoxId: objectBoxIdParam,
+              id: idParam,
+              type: typeParam,
+              v: vParam,
+              data: dataParam,
+              timestamp: timestampParam,
+              applied: appliedParam);
 
           return object;
         })
@@ -483,67 +483,62 @@ class SuggestionV1_ {
       obx.QueryStringProperty<SuggestionV1>(_entities[1].properties[2]);
 }
 
-/// [HistoryEntryV1] entity fields to define ObjectBox queries.
-class HistoryEntryV1_ {
-  /// See [HistoryEntryV1.objectBoxId].
-  static final objectBoxId =
-      obx.QueryIntegerProperty<HistoryEntryV1>(_entities[2].properties[0]);
-
-  /// See [HistoryEntryV1.noteId].
-  static final noteId =
-      obx.QueryStringProperty<HistoryEntryV1>(_entities[2].properties[1]);
-
-  /// See [HistoryEntryV1.noteTitle].
-  static final noteTitle =
-      obx.QueryStringProperty<HistoryEntryV1>(_entities[2].properties[2]);
-
-  /// See [HistoryEntryV1.noteText].
-  static final noteText =
-      obx.QueryStringProperty<HistoryEntryV1>(_entities[2].properties[3]);
-
-  /// See [HistoryEntryV1.noteCreatedAt].
-  static final noteCreatedAt =
-      obx.QueryDateProperty<HistoryEntryV1>(_entities[2].properties[4]);
-
-  /// See [HistoryEntryV1.noteModifiedAt].
-  static final noteModifiedAt =
-      obx.QueryDateProperty<HistoryEntryV1>(_entities[2].properties[5]);
-
-  /// See [HistoryEntryV1.chainEventId].
-  static final chainEventId =
-      obx.QueryStringProperty<HistoryEntryV1>(_entities[2].properties[6]);
-
-  /// See [HistoryEntryV1.type].
-  static final type =
-      obx.QueryStringProperty<HistoryEntryV1>(_entities[2].properties[7]);
-
-  /// See [HistoryEntryV1.applied].
-  static final applied =
-      obx.QueryBooleanProperty<HistoryEntryV1>(_entities[2].properties[8]);
-}
-
 /// [NoteV1] entity fields to define ObjectBox queries.
 class NoteV1_ {
   /// See [NoteV1.objectBoxId].
   static final objectBoxId =
-      obx.QueryIntegerProperty<NoteV1>(_entities[3].properties[0]);
+      obx.QueryIntegerProperty<NoteV1>(_entities[2].properties[0]);
 
   /// See [NoteV1.id].
-  static final id = obx.QueryStringProperty<NoteV1>(_entities[3].properties[1]);
+  static final id = obx.QueryStringProperty<NoteV1>(_entities[2].properties[1]);
 
   /// See [NoteV1.createdAt].
   static final createdAt =
-      obx.QueryDateProperty<NoteV1>(_entities[3].properties[2]);
+      obx.QueryDateProperty<NoteV1>(_entities[2].properties[2]);
 
   /// See [NoteV1.modifiedAt].
   static final modifiedAt =
-      obx.QueryDateProperty<NoteV1>(_entities[3].properties[3]);
+      obx.QueryDateProperty<NoteV1>(_entities[2].properties[3]);
 
   /// See [NoteV1.title].
   static final title =
-      obx.QueryStringProperty<NoteV1>(_entities[3].properties[4]);
+      obx.QueryStringProperty<NoteV1>(_entities[2].properties[4]);
 
   /// See [NoteV1.text].
   static final text =
-      obx.QueryStringProperty<NoteV1>(_entities[3].properties[5]);
+      obx.QueryStringProperty<NoteV1>(_entities[2].properties[5]);
+
+  /// See [NoteV1.deleted].
+  static final deleted =
+      obx.QueryBooleanProperty<NoteV1>(_entities[2].properties[6]);
+}
+
+/// [EventV1] entity fields to define ObjectBox queries.
+class EventV1_ {
+  /// See [EventV1.objectBoxId].
+  static final objectBoxId =
+      obx.QueryIntegerProperty<EventV1>(_entities[3].properties[0]);
+
+  /// See [EventV1.id].
+  static final id =
+      obx.QueryStringProperty<EventV1>(_entities[3].properties[1]);
+
+  /// See [EventV1.type].
+  static final type =
+      obx.QueryStringProperty<EventV1>(_entities[3].properties[2]);
+
+  /// See [EventV1.v].
+  static final v = obx.QueryStringProperty<EventV1>(_entities[3].properties[3]);
+
+  /// See [EventV1.timestamp].
+  static final timestamp =
+      obx.QueryDateProperty<EventV1>(_entities[3].properties[4]);
+
+  /// See [EventV1.applied].
+  static final applied =
+      obx.QueryBooleanProperty<EventV1>(_entities[3].properties[5]);
+
+  /// See [EventV1.data].
+  static final data =
+      obx.QueryStringProperty<EventV1>(_entities[3].properties[6]);
 }
